@@ -86,7 +86,8 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(dienthoai);
                         break;
                     case 2:
-                        Intent laptop = new Intent(getApplicationContext(),LaptopActivity.class);
+                        Intent laptop = new Intent(getApplicationContext(),DienThoaiActivity.class);
+                        laptop.putExtra("loai",2);
                         startActivity(laptop);
                         break;
                 }
@@ -156,10 +157,6 @@ private void  getSpMoi(){
         Animation slide_out = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.slide_out_right);
         viewFlipper.setInAnimation(slide_in);
         viewFlipper.setOutAnimation(slide_out);
-
-
-
-
     }
 
     private void Anhxa(){
@@ -190,9 +187,6 @@ private void  getSpMoi(){
         }else{
             return false;
         }
-
-
-
     }
     protected void onDestroy() {
         compositeDisposable.clear();
