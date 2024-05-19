@@ -14,6 +14,9 @@
         android:theme="@style/Theme.Demo"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activity.GioHangActivity"
+            android:exported="true" />
+        <activity
             android:name=".activity.ChiTietActivity"
             android:exported="true" />
         <activity
