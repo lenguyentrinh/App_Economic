@@ -2,10 +2,12 @@ package com.example.demo.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -55,7 +57,7 @@ public class ChiTietActivity extends AppCompatActivity {
             boolean flag = false;
             int soluong =Integer.parseInt(spinner.getSelectedItem().toString());
             for(int i = 0; i<Utils.manggiohang.size();i++){
-                if(Utils.manggiohang.get(i).getInsp() == sanPhamMoi.getId()){
+                if(Utils.manggiohang.get(i).getIdsp() == sanPhamMoi.getId()){
                     Utils.manggiohang.get(i).setSoluong(soluong+Utils.manggiohang.get(i).getSoluong());
                     long gia = Long.parseLong(sanPhamMoi.getGiasp())*Utils.manggiohang.get(i).getSoluong();
                     Utils.manggiohang.get(i).setGiasp(gia);
@@ -66,8 +68,9 @@ public class ChiTietActivity extends AppCompatActivity {
                 long gia = Long.parseLong(sanPhamMoi.getGiasp()) * soluong;
                 GioHang gioHang = new GioHang();
                 gioHang.setGiasp(gia);
+                gioHang.setTensp(sanPhamMoi.getTensp());
                 gioHang.setSoluong(soluong);
-                gioHang.setInsp(sanPhamMoi.getId());
+                gioHang.setIdsp(sanPhamMoi.getId());
                 gioHang.setHinhsp(sanPhamMoi.getHinhanh());
                 Utils.manggiohang.add(gioHang);
             }
@@ -76,13 +79,18 @@ public class ChiTietActivity extends AppCompatActivity {
             int soluong =Integer.parseInt(spinner.getSelectedItem().toString());
             long gia = Long.parseLong(sanPhamMoi.getGiasp()) * soluong;
             GioHang gioHang = new GioHang();
+            gioHang.setTensp(sanPhamMoi.getTensp());
             gioHang.setGiasp(gia);
             gioHang.setSoluong(soluong);
-            gioHang.setInsp(sanPhamMoi.getId());
+            gioHang.setIdsp(sanPhamMoi.getId());
             gioHang.setHinhsp(sanPhamMoi.getHinhanh());
             Utils.manggiohang.add(gioHang);
          }
-        badge.setText((String.valueOf(Utils.manggiohang.size())));
+        int totalItem = 0;
+        for(int i = 0 ; i< Utils.manggiohang.size();i++){
+            totalItem = totalItem+ Utils.manggiohang.get(i).getSoluong();
+        }
+        badge.setText((String.valueOf(totalItem)));
     }
 
     private void initData() {
@@ -106,8 +114,21 @@ public class ChiTietActivity extends AppCompatActivity {
         imghinhanh= findViewById(R.id.imgchitiet);
         toolbar = findViewById(R.id.toobar);
         badge = findViewById(R.id.menu_sl);
+        FrameLayout frameLayoutgiohang = findViewById(R.id.framegiohang);
+        frameLayoutgiohang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent giohang = new Intent(getApplicationContext(),GioHangActivity.class);
+                startActivity(giohang);
+
+            }
+        });
         if(Utils.manggiohang != null){
-            badge.setText(String.valueOf(Utils.manggiohang.size()));
+            int totalItem = 0;
+            for(int i = 0 ; i< Utils.manggiohang.size();i++){
+                totalItem = totalItem+ Utils.manggiohang.get(i).getSoluong();
+            }
+            badge.setText(String.valueOf(totalItem));
         }
 
 
@@ -121,5 +142,17 @@ public class ChiTietActivity extends AppCompatActivity {
                 finish();
             }
         });
+    };
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(Utils.manggiohang != null){
+            int totalItem = 0;
+            for(int i = 0 ; i< Utils.manggiohang.size();i++){
+                totalItem = totalItem+ Utils.manggiohang.get(i).getSoluong();
+            }
+            badge.setText(String.valueOf(totalItem));
+        }
     }
 }

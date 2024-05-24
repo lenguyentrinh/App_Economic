@@ -1,7 +1,7 @@
 package com.example.demo.model;
 
 public class GioHang {
-    int insp;
+    int idsp;
     String tensp;
     long giasp;
     String hinhsp;
@@ -10,12 +10,12 @@ public class GioHang {
     public GioHang() {
     }
 
-    public int getInsp() {
-        return insp;
+    public int getIdsp() {
+        return idsp;
     }
 
-    public void setInsp(int insp) {
-        this.insp = insp;
+    public void setIdsp(int idsp) {
+        this.idsp = idsp;
     }
 
     public String getTensp() {

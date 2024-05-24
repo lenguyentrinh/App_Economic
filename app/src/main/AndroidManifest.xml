@@ -14,6 +14,12 @@
         android:theme="@style/Theme.Demo"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activity.MainActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.DangKiActivity"
+            android:exported="true" />
+        <activity
             android:name=".activity.GioHangActivity"
             android:exported="true" />
         <activity
@@ -26,7 +32,7 @@
             android:name=".activity.DienThoaiActivity"
             android:exported="true" />
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".activity.DangnhapActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

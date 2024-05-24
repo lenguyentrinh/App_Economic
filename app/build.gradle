@@ -24,6 +24,20 @@ android {
             classpath 'com.android.tools.build:gradle:4.1.0'
         }
     }
+    packagingOptions {
+        exclude("META-INF/INDEX.LIST") // Exclude the conflicting files
+        exclude("META-INF/DEPENDENCIES")
+        exclude("META-INF/LICENSE")
+        exclude("META-INF/LICENSE.txt")
+        exclude("META-INF/license.txt")
+        exclude("META-INF/NOTICE")
+        exclude("META-INF/NOTICE.txt")
+        exclude("META-INF/notice.txt")
+        exclude("META-INF/ASL2.0")
+        exclude("META-INF/*.kotlin_module")
+
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -65,5 +79,10 @@ dependencies {
     implementation "com.github.akarnokd:rxjava3-retrofit-adapter:3.0.0"
     //bradge
     implementation 'com.nex3z:notification-badge:1.0.4'
+    //even bus
+    implementation 'org.greenrobot:eventbus:3.2.0'
+//paper
+    implementation 'io.github.pilgr:paperdb:2.7.1'
+
 
 }
