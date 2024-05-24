@@ -14,6 +14,12 @@
         android:theme="@style/Theme.Demo"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activity.ThanhToanActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.ResetPassActivity"
+            android:exported="true" />
+        <activity
             android:name=".activity.MainActivity"
             android:exported="true" />
         <activity
