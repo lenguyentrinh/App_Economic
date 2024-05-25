@@ -77,12 +77,15 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation "com.github.akarnokd:rxjava3-retrofit-adapter:3.0.0"
-    //bradge
+    //bradge so luong sp trong gio hang
     implementation 'com.nex3z:notification-badge:1.0.4'
-    //even bus
+    //even bus sư kien dong bo nhu cai tinh tong tièn
     implementation 'org.greenrobot:eventbus:3.2.0'
-//paper
+//paper dung de luu tru email , password khi đã loading lần trưỡ đó khi thoát ưng dụng vẫn còn ở page login
     implementation 'io.github.pilgr:paperdb:2.7.1'
+
+    //gson
+    implementation 'com.google.code.gson:gson:2.8.9'
 
 
 }

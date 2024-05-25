@@ -44,4 +44,16 @@ public interface ApiBanHang {
     Observable<UserModel> resetPass(
             @Field("email") String email
     );
+//chi tra ve thanh cong hay khong nen khong can tao modle ms
+    @POST("donhang.php")
+    @FormUrlEncoded
+    Observable<UserModel> createOrder(
+            @Field("email") String email,
+             @Field("sdt") String sdt,
+            @Field("tongtien") String tongtien,
+            @Field("iduser") int id,
+            @Field("diachi") String diachi,
+            @Field("soluong") int soluong,
+            @Field("chitiet") String chitiet
+    );
 }

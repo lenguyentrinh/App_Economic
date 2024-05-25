@@ -17,8 +17,9 @@
             android:layout_height="match_parent">
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toobarmanhinhchinh"
-                app:title="Trang chính"
-                android:background="#ff00dfff"
+                app:title="Home"
+                android:background="#628D29"
+                app:titleTextColor="@android:color/white"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize">
                 <FrameLayout
@@ -34,6 +35,7 @@
                         android:layout_height="28dp"/>
                     <ImageView
                         android:layout_marginTop="15dp"
+                        app:tint="@color/white"
                         android:src="@drawable/ic_cart_24"
                         android:layout_width="35dp"
                         android:layout_height="35dp"/>
@@ -48,24 +50,26 @@
 
             </ViewFlipper>
             <LinearLayout
+
                 android:textSize="20sp"
-                android:background="#5992d2"
+                android:background="#F6F5F5"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <TextView
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="20dp"
                     android:textColor="@android:color/holo_red_light"
-                    android:text="Sản phẩm mới"
+                    android:text="New product"
                     android:textStyle="bold"
                     android:orientation="vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                 </TextView>
                 <androidx.recyclerview.widget.RecyclerView
+
                     android:id="@+id/recycleview"
                     android:layout_marginTop="10dp"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginLeft="15dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
                 </androidx.recyclerview.widget.RecyclerView>
