@@ -76,6 +76,11 @@ public class ThanhToanActivity extends AppCompatActivity {
                     String str_email = Utils.user_current.getEmail();
                     String str_sdt = Utils.user_current.getMobile();
                     int id = Utils.user_current.getId();
+                    Log.d("str_email",str_email);
+                    Log.d("str_sdt",str_sdt);
+                    Log.d("tongtien",String.valueOf(tongtien));
+                    Log.d("str_diachi",str_diachi);
+                    Log.d("chitiet",new Gson().toJson(Utils.manggiohang));
                     compositeDisposable.add(apiBanHang.createOrder(str_email, str_sdt,String.valueOf(tongtien),id,str_diachi,totalItem,new Gson().toJson(Utils.manggiohang))
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())

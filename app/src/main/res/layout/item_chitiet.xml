@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        app:cardBackgroundColor="#F3EAEA"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="4dp"
+        app:cardCornerRadius="4dp">
+
+        <RelativeLayout
+            android:layout_margin="10dp"
+            android:padding="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/item_imgchitiet"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_person_24"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true" />
+
+            <LinearLayout
+                android:layout_toEndOf="@id/item_imgchitiet"
+                android:layout_marginStart="8dp"
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true">
+
+                <TextView
+                    android:id="@+id/item_tenspchititet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Laptop"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/item_soluongchititet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Quantity: 1"
+                    android:textSize="15sp" />
+            </LinearLayout>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
