@@ -28,6 +28,7 @@ import com.example.demo.adapter.LoaiSpAdapter;
 import com.example.demo.adapter.SanPhamMoiAdapter;
 import com.example.demo.model.LoaiSp;
 import com.example.demo.model.SanPhamMoi;
+import com.example.demo.model.User;
 import com.example.demo.retrofit.ApiBanHang;
 import com.example.demo.retrofit.RetrofitClient;
 import com.example.demo.utils.Utils;
@@ -37,6 +38,7 @@ import com.nex3z.notificationbadge.NotificationBadge;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.paperdb.Paper;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
@@ -62,6 +64,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         apiBanHang = RetrofitClient.getInstance(Utils.BASE_URL).create(ApiBanHang.class);
+        Paper.init(this);
+        if(Paper.book().read("user")!=null){
+            User user = Paper.book().read("user");
+            Utils.user_current = user;
+        }
         Anhxa();
         ActionBar();
         if(isConnected(this)){
@@ -99,6 +106,13 @@ public class MainActivity extends AppCompatActivity {
                         Intent donhang = new Intent(getApplicationContext(),XemDonActivity.class);
                         startActivity(donhang);
                         break;
+                    case 6:
+                        //xoa user
+                        Paper.book().delete("user");
+                        Intent dangxuat = new Intent(getApplicationContext(),DangnhapActivity.class);
+                        startActivity(dangxuat);
+                        finish();
+                        break;
                 }
             }
         });
@@ -128,6 +142,7 @@ private void  getSpMoi(){
             loaiSpModel -> {
                 if(loaiSpModel.isSuccess()){
                 mangloaisp = loaiSpModel.getResult();
+                mangloaisp.add(new LoaiSp("Logout", "https://cdn1.iconfinder.com/data/icons/heroicons-ui/24/logout-512.png"));
                 loaiSpAdapter = new LoaiSpAdapter(getApplicationContext(),mangloaisp);
                 listViewManHinhChinh.setAdapter(loaiSpAdapter);
                 }

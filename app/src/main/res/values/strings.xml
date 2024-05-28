@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Demo</string>
+    <string name="splash_image">Description of the splash image</string>
 </resources>
