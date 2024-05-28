@@ -14,6 +14,12 @@
         android:theme="@style/Theme.Demo"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activity.SplashActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.SearchActivity"
+            android:exported="true" />
+        <activity
             android:name=".activity.XemDonActivity"
             android:exported="true" />
         <activity

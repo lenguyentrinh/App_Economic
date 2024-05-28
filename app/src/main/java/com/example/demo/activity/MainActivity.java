@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
     SanPhamMoiAdapter spAdater;
     NotificationBadge badge;
     FrameLayout frameLayout;
+    ImageView imgsearch;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -168,6 +169,7 @@ private void  getSpMoi(){
     }
 
     private void Anhxa(){
+        imgsearch = findViewById(R.id.imgsearch);
         toolbar = findViewById(R.id.toobarmanhinhchinh);
         viewFlipper = findViewById(R.id.viewFlipper);
         recyclerViewManHinhChinh = findViewById(R.id.recycleview);
@@ -196,6 +198,14 @@ private void  getSpMoi(){
             public void onClick(View v) {
                 Intent giohang = new Intent(getApplicationContext(),GioHangActivity.class);
                 startActivity(giohang);
+            }
+        });
+        imgsearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),SearchActivity.class);
+                startActivity(intent);
+
             }
         });
         // khoi tao adapter

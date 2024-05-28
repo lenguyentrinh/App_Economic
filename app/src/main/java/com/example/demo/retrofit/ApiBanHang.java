@@ -2,6 +2,7 @@ package com.example.demo.retrofit;
 
 import com.example.demo.model.DonHangModel;
 import com.example.demo.model.LoaiSpModel;
+import com.example.demo.model.OrderResponse;
 import com.example.demo.model.SanPhamMoiModel;
 import com.example.demo.model.UserModel;
 
@@ -48,7 +49,7 @@ public interface ApiBanHang {
 //chi tra ve thanh cong hay khong nen khong can tao modle ms
     @POST("donhang.php")
     @FormUrlEncoded
-    Observable<UserModel> createOrder(
+    Observable<OrderResponse> createOrder(
             @Field("email") String email,
             @Field("sdt") String sdt,
             @Field("tongtien") String tongtien,
@@ -62,5 +63,11 @@ public interface ApiBanHang {
     @FormUrlEncoded
     Observable<DonHangModel> xemDonHang(
             @Field("iduser") int iduser
+    );
+
+    @POST("timkiem.php")
+    @FormUrlEncoded
+    Observable<SanPhamMoiModel> search(
+            @Field("search") String search
     );
 }

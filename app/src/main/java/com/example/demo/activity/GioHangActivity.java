@@ -29,6 +29,7 @@ public class GioHangActivity extends AppCompatActivity {
     Button btnmuahang;
     GioHangAdapter adapter;
     long tongtiensp;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,50 +40,49 @@ public class GioHangActivity extends AppCompatActivity {
     }
 
     private void tinhTongTien() {
-         tongtiensp= 0;
-        for(int i = 0; i <Utils.manggiohang.size();i++){
-            tongtiensp = tongtiensp + (Utils.manggiohang.get(i).getGiasp()* Utils.manggiohang.get(i).getSoluong());
+        tongtiensp = 0;
+        for (int i = 0; i < Utils.mangmuahang.size(); i++) {
+            tongtiensp = tongtiensp + (Utils.mangmuahang.get(i).getGiasp() * Utils.mangmuahang.get(i).getSoluong());
         }
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
         tongtien.setText(decimalFormat.format(tongtiensp));
     }
 
     private void initControl() {
-        setSupportActionBar(toolbar);;
-        getSupportActionBar()
-        .setDisplayHomeAsUpEnabled(true);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            finish();
-        }
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
-    });
         recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        if (Utils.manggiohang.size()==0){
+
+        if (Utils.manggiohang.size() == 0) {
             gioihangtrong.setVisibility(View.VISIBLE);
         } else {
-            adapter = new GioHangAdapter(getApplicationContext(),Utils.manggiohang);
+            adapter = new GioHangAdapter(getApplicationContext(), Utils.manggiohang);
             recyclerView.setAdapter(adapter);
-
-
         }
+
         btnmuahang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),ThanhToanActivity.class);
-                intent.putExtra("tongtien",tongtiensp);
+                Intent intent = new Intent(getApplicationContext(), ThanhToanActivity.class);
+                intent.putExtra("tongtien", tongtiensp);
                 startActivity(intent);
             }
         });
     }
 
     private void initView() {
-        gioihangtrong= findViewById(R.id.txtgiohangtrong);
-        tongtien= findViewById(R.id.txttongtien);
-        toolbar = findViewById(R.id.toobar);
+        gioihangtrong = findViewById(R.id.txtgiohangtrong);
+        tongtien = findViewById(R.id.txttongtien);
+        toolbar = findViewById(R.id.toobar); // Ensure proper reference
         recyclerView = findViewById(R.id.recycleviewgiohang);
         btnmuahang = findViewById(R.id.btnmuahang);
     }
@@ -95,11 +95,13 @@ public class GioHangActivity extends AppCompatActivity {
 
     @Override
     protected void onStop() {
+        EventBus.getDefault().unregister(this);
         super.onStop();
     }
+
     @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
-    public void eventTinhTien(TinhTongEvent event){
-        if(event !=null){
+    public void eventTinhTien(TinhTongEvent event) {
+        if (event != null) {
             tinhTongTien();
         }
     }
