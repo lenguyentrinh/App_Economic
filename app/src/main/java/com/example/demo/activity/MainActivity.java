@@ -102,6 +102,10 @@ public class MainActivity extends AppCompatActivity {
                         laptop.putExtra("loai",2);
                         startActivity(laptop);
                         break;
+                    case 3:
+                        Intent map = new Intent(getApplicationContext(),MapActivity.class);
+                        startActivity(map);
+                        break;
                     case 5:
                         Intent donhang = new Intent(getApplicationContext(),XemDonActivity.class);
                         startActivity(donhang);
